@@ -8,7 +8,7 @@ import h5py
 
 # Konfigurasi Halaman
 st.set_page_config(
-    page_title="Sistem Deteksi Kematangan Pisang",
+    page_title="Sistem Klasifikasi Kematangan Pisang",
     layout="wide",
     initial_sidebar_state="collapsed"
 )
@@ -20,12 +20,12 @@ css_kustom = """
 
     html, body, [class*="css"]  {
         font-family: 'Plus Jakarta Sans', sans-serif;
-        background-color: #FAFAFA;
+        background-color: #FEF9E7;
         color: #111827;
     }
     
     .stApp {
-        background-color: #FAFAFA;
+        background-color: #FEF9E7;
     }
 
     /* TABS NAVBAR STYLING - CENTERED */
