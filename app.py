@@ -1,9 +1,11 @@
 import streamlit as st
+import tensorflow as tf
 from PIL import Image
 import numpy as np
 import time
 import os
 import h5py
+
 
 # Konfigurasi Halaman
 st.set_page_config(
@@ -174,7 +176,6 @@ def inject_dense_weights(model, h5_path, expected_in):
         model.layers[-1].set_weights([kernel_2, bias_2])
 
 def get_augmentation_layer():
-    import tensorflow as tf
     return tf.keras.Sequential([
         tf.keras.layers.RandomFlip("horizontal_and_vertical"),
         tf.keras.layers.RandomRotation(0.2),
@@ -184,7 +185,6 @@ def get_augmentation_layer():
 
 @st.cache_resource
 def load_mobilenet_v3():
-    import tensorflow as tf
     try:
         data_augmentation = get_augmentation_layer()
         base_model = tf.keras.applications.MobileNetV3Large(include_top=False, weights='imagenet', input_shape=(224, 224, 3))
@@ -193,8 +193,8 @@ def load_mobilenet_v3():
         x = data_augmentation(inputs)
         x = tf.keras.applications.mobilenet_v3.preprocess_input(x)
         x = base_model(x, training=False)
-        x = tf.keras.layers.GlobalAveragePooling2D()(x)
-        x = tf.keras.layers.Dense(128, activation='relu')(x)
+        x = tf.keras.layers.GlobalAveragePooling2D(name='global_average_pooling2d_1')(x)
+        x = tf.keras.layers.Dense(128, activation='relu', name='dense_2')(x)
         x = tf.keras.layers.Dropout(0.3)(x)
         outputs = tf.keras.layers.Dense(3, activation='softmax')(x)
         
@@ -206,7 +206,6 @@ def load_mobilenet_v3():
 
 @st.cache_resource
 def load_convnext_tiny():
-    import tensorflow as tf
     try:
         data_augmentation = get_augmentation_layer()
         base_model = tf.keras.applications.ConvNeXtTiny(include_top=False, weights='imagenet', input_shape=(224, 224, 3))
@@ -215,8 +214,8 @@ def load_convnext_tiny():
         x = data_augmentation(inputs)
         x = tf.keras.applications.convnext.preprocess_input(x)
         x = base_model(x, training=False)
-        x = tf.keras.layers.GlobalAveragePooling2D()(x)
-        x = tf.keras.layers.Dense(128, activation='relu')(x)
+        x = tf.keras.layers.GlobalAveragePooling2D(name='global_average_pooling2d')(x)
+        x = tf.keras.layers.Dense(128, activation='relu', name='dense')(x)
         x = tf.keras.layers.Dropout(0.3)(x)
         outputs = tf.keras.layers.Dense(3, activation='softmax')(x)
         
@@ -227,8 +226,6 @@ def load_convnext_tiny():
         return None, str(e)
 
 def preprocess_image(image):
-    import tensorflow as tf
-    import numpy as np
     img = image.resize(UKURAN_INPUT)
     img_array = tf.keras.preprocessing.image.img_to_array(img)
     img_array = np.expand_dims(img_array, 0)
@@ -249,7 +246,7 @@ def tampilkan_gambar_visualisasi(nama_file, deskripsi):
         gambar = Image.open(path_visual)
         col1, col2, col3 = st.columns([1, 2, 1])
         with col2:
-            st.image(gambar, caption=deskripsi, use_column_width=True)
+            st.image(gambar, caption=deskripsi, use_container_width=True)
     else:
         st.info(f"Visualisasi {nama_file} belum tersedia.")
 
