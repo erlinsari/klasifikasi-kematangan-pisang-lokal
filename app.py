@@ -282,19 +282,18 @@ if model_mob is None or model_conv is None:
 else:
     kolom_kiri, kolom_tengah, kolom_kanan = st.columns([0.5, 3, 0.5])
 
-        with kolom_tengah:
-            st.markdown("<div class='info-card'><b>Instruksi Operasional:</b> Unggah citra sampel pisang dengan pencahayaan netral dan resolusi yang memadai untuk memperoleh hasil analisis komparatif.</div>", unsafe_allow_html=True)
-            berkas_unggah = st.file_uploader("Pilih file citra (Resolusi disarankan: > 500x500px)", type=['jpg', 'jpeg', 'png'], label_visibility="collapsed")
+    with kolom_tengah:
+        st.markdown("<div class='info-card'><b>Instruksi Operasional:</b> Unggah citra sampel pisang dengan pencahayaan netral...</div>", unsafe_allow_html=True)
+        berkas_unggah = st.file_uploader("Pilih file citra (Resolusi disarankan: > 500x500px)", type=['jpg', 'jpeg', 'png'], label_visibility="collapsed")
+        
+        if berkas_unggah is not None:
+            citra_asli = Image.open(berkas_unggah).convert('RGB')
+            st.image(citra_asli, caption="Citra Sampel Terunggah", use_container_width=True)
+            st.markdown("<br>", unsafe_allow_html=True)
             
-            if berkas_unggah is not None:
-                citra_asli = Image.open(berkas_unggah).convert('RGB')
-                st.image(citra_asli, caption="Citra Sampel Terunggah", use_container_width=True)
-                st.markdown("<br>", unsafe_allow_html=True)
-                
-                col_btn1, col_btn2, col_btn3 = st.columns([1, 2, 1])
-                with col_btn2:
-                    tombol_prediksi = st.button("Lakukan Inspeksi Paralel", use_container_width=True)
-
+            col_btn1, col_btn2, col_btn3 = st.columns([1, 2, 1])
+            with col_btn2:
+                tombol_prediksi = st.button("Lakukan Inspeksi Paralel", use_container_width=True)
         if berkas_unggah is not None and 'tombol_prediksi' in locals() and tombol_prediksi:
             st.markdown("<hr>", unsafe_allow_html=True)
             st.markdown("<h2 style='text-align: center; margin-bottom: 2rem;'>Laporan Hasil Inspeksi Komparatif</h2>", unsafe_allow_html=True)
