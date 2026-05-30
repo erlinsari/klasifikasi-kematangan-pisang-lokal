@@ -274,7 +274,6 @@ st.markdown("<p style='text-align: center; font-size: 1.1rem; color: #6B7280; ma
 tab_prediksi = st.tabs(["Inspeksi Visual"])[0]
 
 # --- TAB 1: PREDIKSI ---
-with tab_prediksi:
     st.markdown("<br>", unsafe_allow_html=True)
     
     model_mob, err_mob = load_mobilenet_v3()
@@ -283,7 +282,7 @@ with tab_prediksi:
     if model_mob is None or model_conv is None:
         st.warning("Peringatan: File bobot model belum terpasang dengan benar pada peladen (server).")
     else:
-        kolom_kiri, kolom_tengah, kolom_kanan = st.columns([1, 2, 1])
+        kolom_kiri, kolom_tengah, kolom_kanan = st.columns([0.5, 3, 0.5])
 
         with kolom_tengah:
             st.markdown("<div class='info-card'><b>Instruksi Operasional:</b> Unggah citra sampel pisang dengan pencahayaan netral dan resolusi yang memadai untuk memperoleh hasil analisis komparatif.</div>", unsafe_allow_html=True)
