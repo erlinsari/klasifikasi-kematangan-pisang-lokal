@@ -349,6 +349,3 @@ else:
                         </div>
                     </div>
                     """, unsafe_allow_html=True)
-            
-            st.markdown("<br><p style='text-align: center; font-size: 0.95rem; color: #6B7280;'>Laporan di atas merupakan evaluasi komparatif antara dua model Deep Learning mutakhir.</p>", unsafe_allow_html=True)
-
