@@ -270,8 +270,6 @@ def tampilkan_gambar_visualisasi(nama_file, deskripsi):
 st.markdown("<h1 style='text-align: center; margin-top: 1rem;'>Sistem Klasifikasi Kematangan Pisang</h1>", unsafe_allow_html=True)
 st.markdown("<p style='text-align: center; font-size: 1.1rem; color: #6B7280; margin-bottom: 2rem;'>Sistem Otomatisasi Penilaian Kualitas Pada Buah Pisang Lokal Indonesia</p>", unsafe_allow_html=True)
 
-# TABS NAVIGATION
-tab_prediksi = st.tabs(["Inspeksi Visual"])[0]
 
 # --- TAB 1: PREDIKSI ---
     st.markdown("<br>", unsafe_allow_html=True)
