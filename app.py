@@ -14,26 +14,27 @@ st.set_page_config(
 )
 
 # Custom CSS: Clean, White, Symmetrical, Centered Navbar
+# Custom CSS: Clean, Symmetrical, Pastel Yellow Theme
 css_kustom = """
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+    @import url('https://googleapis.com');
 
     html, body, [class*="css"]  {
         font-family: 'Plus Jakarta Sans', sans-serif;
-        background-color: #FAFAFA;
-        color: #111827;
+        background-color: #FEFBEA; /* Warna Background Kuning Pastel */
+        color: #2F3E46;
     }
     
     .stApp {
-        background-color: #FAFAFA;
+        background-color: #FEFBEA; /* Warna Background Utama Aplikasi Kuning Pastel */
     }
 
-    /* TABS NAVBAR STYLING - CENTERED */
+    /* TABS NAVBAR STYLING - CENTERED WITH LEAF GREEN ACCENT */
     .stTabs [data-baseweb="tab-list"] {
         display: flex;
         justify-content: center;
         gap: 30px;
-        border-bottom: 1px solid #E5E7EB;
+        border-bottom: 2px solid #EAE5C9;
         padding-bottom: 10px;
         margin-bottom: 2rem;
     }
@@ -44,7 +45,7 @@ css_kustom = """
         background-color: transparent;
         border-radius: 0px;
         padding: 10px 15px;
-        color: #6B7280;
+        color: #7A7555;
         font-weight: 600;
         font-size: 1.1rem;
         border: none !important;
@@ -52,99 +53,102 @@ css_kustom = """
     }
     
     .stTabs [aria-selected="true"] {
-        color: #111827 !important;
-        border-bottom: 3px solid #111827 !important;
+        color: #2E7D32 !important; /* Teks Tab aktif warna Hijau Daun */
+        border-bottom: 3px solid #E6A100 !important; /* Garis bawah tab aktif warna Kuning Gelap */
         background-color: transparent !important;
     }
 
-    /* Card styling for modern white look */
+    /* Card styling - Putih bersih agar kontras di atas Latar Belakang Kuning Pastel */
     .metric-card {
         background-color: #FFFFFF;
-        color: #111827 !important;
-        border: 1px solid #E5E7EB;
-        border-radius: 12px;
+        color: #2F3E46 !important;
+        border: 1px solid #EAE5C9;
+        border-radius: 16px;
         padding: 32px 24px;
-        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        box-shadow: 0 4px 20px rgba(230, 161, 0, 0.05);
         text-align: center;
         transition: transform 0.2s ease-in-out;
     }
     
     .info-card {
         background-color: #FFFFFF;
-        color: #111827 !important;
-        border: 1px solid #E5E7EB;
-        border-left: 4px solid #111827;
-        border-radius: 8px;
+        color: #2F3E46 !important;
+        border: 1px solid #EAE5C9;
+        border-left: 4px solid #2E7D32; /* Aksen garis kiri Hijau */
+        border-radius: 12px;
         padding: 24px;
         margin-bottom: 24px;
-        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        box-shadow: 0 2px 12px rgba(230, 161, 0, 0.03);
     }
 
     h1, h2, h3, h4 {
-        color: #111827 !important;
+        color: #1A3038 !important;
         font-weight: 700 !important;
     }
 
+    /* Gradient Button: Green Leaf Theme */
     .stButton > button {
-        background: linear-gradient(135deg, #111827 0%, #374151 100%);
+        background: linear-gradient(135deg, #2E7D32 0%, #1B5E20 100%);
         color: white;
-        border-radius: 8px;
+        border-radius: 10px;
         padding: 0.75rem 2rem;
         font-weight: 600;
         border: none;
         width: 100%;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        box-shadow: 0 4px 12px rgba(46, 125, 50, 0.2);
     }
     
     .stButton > button:hover {
         transform: translateY(-2px);
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        background: linear-gradient(135deg, #1B5E20 0%, #0F3813 100%);
+        box-shadow: 0 6px 20px rgba(46, 125, 50, 0.3);
         color: white;
     }
     
+    /* Soft aesthetic status colors */
     .status-mentah {
-        color: #065F46;
-        background-color: #D1FAE5;
+        color: #1B5E20;
+        background-color: #E8F5E9;
         padding: 6px 20px;
-        border-radius: 6px;
+        border-radius: 8px;
         font-weight: 600;
         font-size: 1.1rem;
         display: inline-block;
-        border: 1px solid #A7F3D0;
+        border: 1px solid #C8E6C9;
     }
     
     .status-matang {
-        color: #B45309;
-        background-color: #FEF3C7;
+        color: #E65100;
+        background-color: #FFF3E0;
         padding: 6px 20px;
-        border-radius: 6px;
+        border-radius: 8px;
         font-weight: 600;
         font-size: 1.1rem;
         display: inline-block;
-        border: 1px solid #FDE68A;
+        border: 1px solid #FFE0B2;
     }
 
     .status-terlalu {
-        color: #991B1B;
-        background-color: #FEE2E2;
+        color: #B71C1C;
+        background-color: #FFEBEE;
         padding: 6px 20px;
-        border-radius: 6px;
+        border-radius: 8px;
         font-weight: 600;
         font-size: 1.1rem;
         display: inline-block;
-        border: 1px solid #FECACA;
+        border: 1px solid #FFCDD2;
     }
     
     hr {
-        border-color: #E5E7EB;
+        border-color: #EAE5C9;
         margin: 2rem 0;
     }
     
     p, li {
         font-size: 1.05rem;
         line-height: 1.7;
-        color: #374151;
+        color: #4A5759;
     }
 </style>
 """
@@ -153,6 +157,7 @@ st.markdown(css_kustom, unsafe_allow_html=True)
 # Konstanta
 UKURAN_INPUT = (224, 224)
 CLASS_NAMES = ['matang', 'mentah', 'terlalu_matang']
+
 
 # --- FUNGSI PEMBUATAN ARSITEKTUR MODEL ---
 def inject_dense_weights(model, h5_path, expected_in):
