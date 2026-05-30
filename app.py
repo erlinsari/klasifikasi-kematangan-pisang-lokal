@@ -14,27 +14,26 @@ st.set_page_config(
 )
 
 # Custom CSS: Clean, White, Symmetrical, Centered Navbar
-# Custom CSS: Clean, Symmetrical, Pastel Yellow Theme
 css_kustom = """
 <style>
-    @import url('https://googleapis.com');
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 
     html, body, [class*="css"]  {
         font-family: 'Plus Jakarta Sans', sans-serif;
-        background-color: #FEFBEA; /* Warna Background Kuning Pastel */
-        color: #2F3E46;
+        background-color: #FAFAFA;
+        color: #111827;
     }
     
     .stApp {
-        background-color: #FEFBEA; /* Warna Background Utama Aplikasi Kuning Pastel */
+        background-color: #FAFAFA;
     }
 
-    /* TABS NAVBAR STYLING - CENTERED WITH LEAF GREEN ACCENT */
+    /* TABS NAVBAR STYLING - CENTERED */
     .stTabs [data-baseweb="tab-list"] {
         display: flex;
         justify-content: center;
         gap: 30px;
-        border-bottom: 2px solid #EAE5C9;
+        border-bottom: 1px solid #E5E7EB;
         padding-bottom: 10px;
         margin-bottom: 2rem;
     }
@@ -45,7 +44,7 @@ css_kustom = """
         background-color: transparent;
         border-radius: 0px;
         padding: 10px 15px;
-        color: #7A7555;
+        color: #6B7280;
         font-weight: 600;
         font-size: 1.1rem;
         border: none !important;
@@ -53,102 +52,99 @@ css_kustom = """
     }
     
     .stTabs [aria-selected="true"] {
-        color: #2E7D32 !important; /* Teks Tab aktif warna Hijau Daun */
-        border-bottom: 3px solid #E6A100 !important; /* Garis bawah tab aktif warna Kuning Gelap */
+        color: #111827 !important;
+        border-bottom: 3px solid #111827 !important;
         background-color: transparent !important;
     }
 
-    /* Card styling - Putih bersih agar kontras di atas Latar Belakang Kuning Pastel */
+    /* Card styling for modern white look */
     .metric-card {
         background-color: #FFFFFF;
-        color: #2F3E46 !important;
-        border: 1px solid #EAE5C9;
-        border-radius: 16px;
+        color: #111827 !important;
+        border: 1px solid #E5E7EB;
+        border-radius: 12px;
         padding: 32px 24px;
-        box-shadow: 0 4px 20px rgba(230, 161, 0, 0.05);
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
         text-align: center;
         transition: transform 0.2s ease-in-out;
     }
     
     .info-card {
         background-color: #FFFFFF;
-        color: #2F3E46 !important;
-        border: 1px solid #EAE5C9;
-        border-left: 4px solid #2E7D32; /* Aksen garis kiri Hijau */
-        border-radius: 12px;
+        color: #111827 !important;
+        border: 1px solid #E5E7EB;
+        border-left: 4px solid #111827;
+        border-radius: 8px;
         padding: 24px;
         margin-bottom: 24px;
-        box-shadow: 0 2px 12px rgba(230, 161, 0, 0.03);
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     }
 
     h1, h2, h3, h4 {
-        color: #1A3038 !important;
+        color: #111827 !important;
         font-weight: 700 !important;
     }
 
-    /* Gradient Button: Green Leaf Theme */
     .stButton > button {
-        background: linear-gradient(135deg, #2E7D32 0%, #1B5E20 100%);
+        background: linear-gradient(135deg, #111827 0%, #374151 100%);
         color: white;
-        border-radius: 10px;
+        border-radius: 8px;
         padding: 0.75rem 2rem;
         font-weight: 600;
         border: none;
         width: 100%;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 12px rgba(46, 125, 50, 0.2);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     }
     
     .stButton > button:hover {
         transform: translateY(-2px);
-        background: linear-gradient(135deg, #1B5E20 0%, #0F3813 100%);
-        box-shadow: 0 6px 20px rgba(46, 125, 50, 0.3);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         color: white;
     }
     
-    /* Soft aesthetic status colors */
     .status-mentah {
-        color: #1B5E20;
-        background-color: #E8F5E9;
+        color: #065F46;
+        background-color: #D1FAE5;
         padding: 6px 20px;
-        border-radius: 8px;
+        border-radius: 6px;
         font-weight: 600;
         font-size: 1.1rem;
         display: inline-block;
-        border: 1px solid #C8E6C9;
+        border: 1px solid #A7F3D0;
     }
     
     .status-matang {
-        color: #E65100;
-        background-color: #FFF3E0;
+        color: #B45309;
+        background-color: #FEF3C7;
         padding: 6px 20px;
-        border-radius: 8px;
+        border-radius: 6px;
         font-weight: 600;
         font-size: 1.1rem;
         display: inline-block;
-        border: 1px solid #FFE0B2;
+        border: 1px solid #FDE68A;
     }
 
     .status-terlalu {
-        color: #B71C1C;
-        background-color: #FFEBEE;
+        color: #991B1B;
+        background-color: #FEE2E2;
         padding: 6px 20px;
-        border-radius: 8px;
+        border-radius: 6px;
         font-weight: 600;
         font-size: 1.1rem;
         display: inline-block;
-        border: 1px solid #FFCDD2;
+        border: 1px solid #FECACA;
     }
     
     hr {
-        border-color: #EAE5C9;
+        border-color: #E5E7EB;
         margin: 2rem 0;
     }
     
     p, li {
         font-size: 1.05rem;
         line-height: 1.7;
-        color: #4A5759;
+        color: #374151;
     }
 </style>
 """
@@ -157,7 +153,6 @@ st.markdown(css_kustom, unsafe_allow_html=True)
 # Konstanta
 UKURAN_INPUT = (224, 224)
 CLASS_NAMES = ['matang', 'mentah', 'terlalu_matang']
-
 
 # --- FUNGSI PEMBUATAN ARSITEKTUR MODEL ---
 def inject_dense_weights(model, h5_path, expected_in):
@@ -277,7 +272,11 @@ st.markdown("<p style='text-align: center; font-size: 1.1rem; color: #6B7280; ma
 
 # TABS NAVIGATION
 tab_prediksi, tab_dataset, tab_convnext, tab_mobilenet, tab_komparasi = st.tabs([
-    "Inspeksi Visual"
+    "Inspeksi Visual", 
+    "Metodologi & Dataset", 
+    "Analisis ConvNeXt-Tiny", 
+    "Analisis MobileNetV3",
+    "Komparasi Model"
 ])
 
 # --- TAB 1: PREDIKSI ---
@@ -363,7 +362,68 @@ with tab_prediksi:
             
             st.markdown("<br><p style='text-align: center; font-size: 0.95rem; color: #6B7280;'>Laporan di atas merupakan evaluasi komparatif antara dua model Deep Learning mutakhir.</p>", unsafe_allow_html=True)
 
+# --- TAB 2: METODOLOGI & DATASET ---
+with tab_dataset:
+    st.markdown("<div style='padding: 1rem 3rem;'>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align:center;'>Metodologi & Manajemen Dataset</h2>", unsafe_allow_html=True)
+    st.markdown("<hr>", unsafe_allow_html=True)
+    
+    st.markdown("<br>", unsafe_allow_html=True)
+    col_data1, col_data2 = st.columns(2)
+    with col_data1:
+        st.markdown("### Proporsi Dataset")
+        st.markdown("""
+        Penelitian ini menggunakan dataset citra pisang yang terbagi menjadi 3 kelas utama: **Mentah (Green)**, **Matang (Yellow)**, dan **Terlalu Matang (Spotted/Brown)**. Dataset dibagi untuk menghindari kebocoran data (*data leakage*):
+        
+        *   **Data Latih (Training)** - Digunakan sebagai materi dasar pembelajaran mesin.
+        *   **Data Validasi (Validation)** - Digunakan untuk evaluasi objektif secara berkala untuk mendeteksi *overfitting*.
+        """)
+    
+    with col_data2:
+        st.markdown("### Konfigurasi Pelatihan Dasar")
+        st.markdown("""
+        *   **Metode Pembelajaran**: Transfer Learning & Fine-Tuning
+        *   **Fungsi Kerugian**: Categorical Crossentropy
+        *   **Pengoptimal**: AdamW & Nadam
+        *   **Augmentasi Data (On-The-Fly)**: Rotasi, *zoom*, kontras, dan pembalikan horizontal (*horizontal flip*) diintegrasikan di dalam layer model (kebal pergeseran letak).
+        """)
+    st.markdown("</div>", unsafe_allow_html=True)
 
+# --- TAB 3: CONVNEXT ---
+with tab_convnext:
+    st.markdown("<div style='padding: 1rem 3rem;'>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align:center;'>Analisis Kinerja ConvNeXt-Tiny</h2>", unsafe_allow_html=True)
+    st.markdown("<hr>", unsafe_allow_html=True)
+    
+    st.markdown("""
+    ConvNeXt adalah arsitektur pure-convolutional modern yang diadaptasi dengan strategi pelatihan Vision Transformers (ViT). Model ini mencapai akurasi uji sebesar **98%** dengan detail fitur ekstraksi yang mendalam.
+    """)
+    st.markdown("<br>", unsafe_allow_html=True)
+    tampilkan_gambar_visualisasi("Confusion_ConvNeXt-TIny.png", "Grafik Pelatihan & Confusion Matrix ConvNeXt-Tiny")
+    st.markdown("</div>", unsafe_allow_html=True)
+
+# --- TAB 4: MOBILENET ---
+with tab_mobilenet:
+    st.markdown("<div style='padding: 1rem 3rem;'>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align:center;'>Analisis Kinerja MobileNetV3-Large</h2>", unsafe_allow_html=True)
+    st.markdown("<hr>", unsafe_allow_html=True)
+    
+    st.markdown("""
+    MobileNetV3 dirancang khusus menggunakan teknik Hardware-Aware Network Architecture Search (NAS). Memiliki kecepatan inferensi ultra-cepat, model ini mempertahankan akurasi hingga **100%** di dataset uji.
+    """)
+    st.markdown("<br>", unsafe_allow_html=True)
+    tampilkan_gambar_visualisasi("Confusion_MobileNetV3.png", "Grafik Pelatihan & Confusion Matrix MobileNetV3-Large")
+    st.markdown("</div>", unsafe_allow_html=True)
+
+# --- TAB 5: KOMPARASI METRIK ---
+with tab_komparasi:
+    st.markdown("<div style='padding: 1rem 3rem;'>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align:center;'>Komparasi Metrik Kinerja Model</h2>", unsafe_allow_html=True)
+    st.markdown("<hr>", unsafe_allow_html=True)
+    
+    st.markdown("""
+    Secara keseluruhan, **MobileNetV3-Large** menunjukkan performa yang sedikit lebih superior dengan waktu latensi yang lebih rendah, sementara **ConvNeXt-Tiny** memberikan kestabilan ekstraksi fitur untuk citra yang sangat kompleks.
+    """)
     st.markdown("<br>", unsafe_allow_html=True)
     tampilkan_gambar_visualisasi("komparasi.png", "Perbandingan Metrik Kinerja Akhir (Accuracy, Precision, Recall, F1-Score)")
     st.markdown("</div>", unsafe_allow_html=True)
