@@ -367,68 +367,7 @@ with tab_prediksi:
             
             st.markdown("<br><p style='text-align: center; font-size: 0.95rem; color: #6B7280;'>Laporan di atas merupakan evaluasi komparatif antara dua model Deep Learning mutakhir.</p>", unsafe_allow_html=True)
 
-# --- TAB 2: METODOLOGI & DATASET ---
-with tab_dataset:
-    st.markdown("<div style='padding: 1rem 3rem;'>", unsafe_allow_html=True)
-    st.markdown("<h2 style='text-align:center;'>Metodologi & Manajemen Dataset</h2>", unsafe_allow_html=True)
-    st.markdown("<hr>", unsafe_allow_html=True)
-    
-    st.markdown("<br>", unsafe_allow_html=True)
-    col_data1, col_data2 = st.columns(2)
-    with col_data1:
-        st.markdown("### Proporsi Dataset")
-        st.markdown("""
-        Penelitian ini menggunakan dataset citra pisang yang terbagi menjadi 3 kelas utama: **Mentah (Green)**, **Matang (Yellow)**, dan **Terlalu Matang (Spotted/Brown)**. Dataset dibagi untuk menghindari kebocoran data (*data leakage*):
-        
-        *   **Data Latih (Training)** - Digunakan sebagai materi dasar pembelajaran mesin.
-        *   **Data Validasi (Validation)** - Digunakan untuk evaluasi objektif secara berkala untuk mendeteksi *overfitting*.
-        """)
-    
-    with col_data2:
-        st.markdown("### Konfigurasi Pelatihan Dasar")
-        st.markdown("""
-        *   **Metode Pembelajaran**: Transfer Learning & Fine-Tuning
-        *   **Fungsi Kerugian**: Categorical Crossentropy
-        *   **Pengoptimal**: AdamW & Nadam
-        *   **Augmentasi Data (On-The-Fly)**: Rotasi, *zoom*, kontras, dan pembalikan horizontal (*horizontal flip*) diintegrasikan di dalam layer model (kebal pergeseran letak).
-        """)
-    st.markdown("</div>", unsafe_allow_html=True)
 
-# --- TAB 3: CONVNEXT ---
-with tab_convnext:
-    st.markdown("<div style='padding: 1rem 3rem;'>", unsafe_allow_html=True)
-    st.markdown("<h2 style='text-align:center;'>Analisis Kinerja ConvNeXt-Tiny</h2>", unsafe_allow_html=True)
-    st.markdown("<hr>", unsafe_allow_html=True)
-    
-    st.markdown("""
-    ConvNeXt adalah arsitektur pure-convolutional modern yang diadaptasi dengan strategi pelatihan Vision Transformers (ViT). Model ini mencapai akurasi uji sebesar **98%** dengan detail fitur ekstraksi yang mendalam.
-    """)
-    st.markdown("<br>", unsafe_allow_html=True)
-    tampilkan_gambar_visualisasi("Confusion_ConvNeXt-TIny.png", "Grafik Pelatihan & Confusion Matrix ConvNeXt-Tiny")
-    st.markdown("</div>", unsafe_allow_html=True)
-
-# --- TAB 4: MOBILENET ---
-with tab_mobilenet:
-    st.markdown("<div style='padding: 1rem 3rem;'>", unsafe_allow_html=True)
-    st.markdown("<h2 style='text-align:center;'>Analisis Kinerja MobileNetV3-Large</h2>", unsafe_allow_html=True)
-    st.markdown("<hr>", unsafe_allow_html=True)
-    
-    st.markdown("""
-    MobileNetV3 dirancang khusus menggunakan teknik Hardware-Aware Network Architecture Search (NAS). Memiliki kecepatan inferensi ultra-cepat, model ini mempertahankan akurasi hingga **100%** di dataset uji.
-    """)
-    st.markdown("<br>", unsafe_allow_html=True)
-    tampilkan_gambar_visualisasi("Confusion_MobileNetV3.png", "Grafik Pelatihan & Confusion Matrix MobileNetV3-Large")
-    st.markdown("</div>", unsafe_allow_html=True)
-
-# --- TAB 5: KOMPARASI METRIK ---
-with tab_komparasi:
-    st.markdown("<div style='padding: 1rem 3rem;'>", unsafe_allow_html=True)
-    st.markdown("<h2 style='text-align:center;'>Komparasi Metrik Kinerja Model</h2>", unsafe_allow_html=True)
-    st.markdown("<hr>", unsafe_allow_html=True)
-    
-    st.markdown("""
-    Secara keseluruhan, **MobileNetV3-Large** menunjukkan performa yang sedikit lebih superior dengan waktu latensi yang lebih rendah, sementara **ConvNeXt-Tiny** memberikan kestabilan ekstraksi fitur untuk citra yang sangat kompleks.
-    """)
     st.markdown("<br>", unsafe_allow_html=True)
     tampilkan_gambar_visualisasi("komparasi.png", "Perbandingan Metrik Kinerja Akhir (Accuracy, Precision, Recall, F1-Score)")
     st.markdown("</div>", unsafe_allow_html=True)
