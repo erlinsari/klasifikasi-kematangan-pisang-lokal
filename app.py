@@ -277,11 +277,7 @@ st.markdown("<p style='text-align: center; font-size: 1.1rem; color: #6B7280; ma
 
 # TABS NAVIGATION
 tab_prediksi, tab_dataset, tab_convnext, tab_mobilenet, tab_komparasi = st.tabs([
-    "Inspeksi Visual", 
-    "Metodologi & Dataset", 
-    "Analisis ConvNeXt-Tiny", 
-    "Analisis MobileNetV3",
-    "Komparasi Model"
+    "Inspeksi Visual"
 ])
 
 # --- TAB 1: PREDIKSI ---
